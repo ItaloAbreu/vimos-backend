@@ -9,6 +9,7 @@ mongoose.connect(
   'mongodb://localhost:27017/vimosapi',
   { uesNewUrlParser: true },
 );
+require('./models/Video');
 
 server.use(cors());
 
