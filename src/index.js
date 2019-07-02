@@ -2,11 +2,13 @@ const express = require('express');
 const cors = require('cors');
 
 const port = process.argv[2] || 9091;
-const app = express();
+const server = express();
 
-app.use(cors());
+server.use(cors());
 
-app.listen(port, () => process.stdout.write(`
+server.use(require('./routes'));
+
+server.listen(port, () => process.stdout.write(`
   Server rodando.
   http://localhost:${port}
 `));
