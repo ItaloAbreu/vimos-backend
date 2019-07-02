@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const port = 9091;
+const port = process.argv[2] || 9091;
 const app = express();
 
 app.use(cors());
