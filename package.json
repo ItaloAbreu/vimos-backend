@@ -5,6 +5,7 @@
   "author": "Italo Abreu <italodw@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "start": "node ./src",
     "dev": "nodemon --ignore uploads/ --inspect ./src"
   },
   "dependencies": {
