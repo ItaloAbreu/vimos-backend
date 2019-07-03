@@ -13,10 +13,12 @@ const VideoSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  date: {
+  createdAt: {
     type: Date,
     default: Date.now,
   },
+}, {
+  versionKey: false,
 });
 
 module.exports = mongoose.model('VideoModel', VideoSchema);
