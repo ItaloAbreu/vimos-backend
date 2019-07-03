@@ -1,16 +1,12 @@
 const express = require('express');
+const VideoController = require('./controllers/VideoController');
 
 const routes = new express.Router();
 
-routes.get('/list', (req, res) => {
-  res.json('"list":{}');
-});
-
-routes.get('/video/:id', (req, res) => {
-  const { id } = req.params;
-
-  res.send(`<h1>Video '${id}' solicitado.</h1>`);
-});
-
+routes.get('/list', VideoController.index);
+routes.post('/video/upload', VideoController.store);
+routes.get('/video/:id', VideoController.show);
+routes.put('/video/:id', VideoController.update);
+routes.delete('/video/:id', VideoController.delete);
 
 module.exports = routes;
