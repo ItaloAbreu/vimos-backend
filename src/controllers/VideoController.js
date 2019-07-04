@@ -8,7 +8,7 @@ module.exports = {
     return res.json(videoinfo);
   },
 
-  async upload(req, res) {
+  async storage(req, res) {
     const videoinfo = await VideoModel.create(req.body);
     return res.json(videoinfo);
   },
