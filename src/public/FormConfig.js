@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 
 document.uploadForm.onsubmit = async (e) => {
@@ -11,5 +12,6 @@ document.uploadForm.onsubmit = async (e) => {
     body: data,
   };
 
-  return fetch('/upload', config);
+  return fetch('/video/storage', config)
+    .catch(err => console.error(err));
 };

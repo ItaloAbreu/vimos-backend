@@ -1,20 +1,20 @@
 const express = require('express');
+const multer = require('multer');
+const uploadsConfig = require('./config/upload');
 const VideoController = require('./controllers/VideoController');
 const StreamVideos = require('./controllers/StreamVideos');
-const UploadVideo = require('./controllers/UploadVideo');
 
 const routes = new express.Router();
+const UploadVideo = multer(uploadsConfig);
 
 routes.use('/', express.static(`${__dirname}/public`));
 
 routes.get('/list', VideoController.index);
-routes.post('/video/storage', VideoController.storage);
+routes.post('/video/storage', UploadVideo.single('video'), VideoController.storage);
 routes.get('/video/:id', VideoController.show);
 routes.put('/video/:id', VideoController.update);
 routes.delete('/video/:id', VideoController.delete);
 
-routes.post('/upload', UploadVideo);
-
-routes.get('/play/:movie', StreamVideos);
+routes.get('/uploads/:movie', StreamVideos);
 
 module.exports = routes;

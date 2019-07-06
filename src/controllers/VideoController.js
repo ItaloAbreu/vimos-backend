@@ -9,7 +9,14 @@ module.exports = {
   },
 
   async storage(req, res) {
-    const videoinfo = await VideoModel.create(req.body);
+    const { title, description } = await req.body;
+
+    const videoinfo = await VideoModel.create({
+      title,
+      description,
+      url: `/uploads/${req.file.filename}`,
+    });
+
     return res.json(videoinfo);
   },
 

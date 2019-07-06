@@ -9,7 +9,7 @@ function StreamVideos(req, res) {
     if (err) {
       // eslint-disable-next-line no-console
       console.error(err);
-      return res.status(404).end(`<h1>'${movie}' Not Found</h1>`);
+      return res.status(404).end('Not Found');
     }
 
     // Variaveis para montar o chunk header
