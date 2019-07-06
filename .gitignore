@@ -88,5 +88,5 @@ typings/
 .dynamodb/
 
 # Uoloads Local files
-uploads/*.*
+uploads/*
 !/**/.gitkeep
