@@ -15,7 +15,7 @@ module.exports = {
 
     await ffmpeg(path).takeScreenshots({
       count: 1,
-      timemarks: [600],
+      timemarks: ['25%'],
       filename: `${filename}-thumbnail.jpg`,
     }, destination);
 
