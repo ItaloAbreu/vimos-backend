@@ -22,8 +22,8 @@ module.exports = {
     const videoinfo = await VideoModel.create({
       title,
       description,
-      url: `/uploads/${filename}`,
-      thumbnail: `/uploads/${filename}-thumbnail.jpg`,
+      url: `/play/${filename}`,
+      thumbnail: `/thumb/${filename}-thumbnail.jpg`,
     });
 
     return res.json(videoinfo);

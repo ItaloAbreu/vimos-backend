@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const uploadsConfig = require('./config/upload');
 const VideoController = require('./controllers/VideoController');
-const StreamVideos = require('./controllers/StreamVideos');
+const { StreamVideos, SendThumbnail } = require('./controllers/SendFiles');
 
 const routes = new express.Router();
 const UploadVideo = multer(uploadsConfig).single('video');
@@ -15,6 +15,7 @@ routes.get('/video/:id', VideoController.show);
 routes.put('/video/:id', VideoController.update);
 routes.delete('/video/:id', VideoController.delete);
 
-routes.get('/uploads/:movie', StreamVideos);
+routes.get('/play/:movie', StreamVideos);
+routes.get('/thumb/:thumbnail', SendThumbnail);
 
 module.exports = routes;
