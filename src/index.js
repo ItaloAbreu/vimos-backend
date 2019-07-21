@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-
-const port = process.argv[2] || 9091;
+const port = process.env.PORT || 8000;
 const server = express();
 
 server.use(cors());
@@ -12,7 +11,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 
 mongoose.connect(
-  'mongodb://localhost:27017/vimosapi',
+  process.env.MONGO,
   { useNewUrlParser: true },
 );
 require('./models/VideoModel');
