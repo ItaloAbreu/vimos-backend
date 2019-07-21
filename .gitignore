@@ -91,7 +91,7 @@ typings/
 uploads/*
 
 # Public
-public/*
+public/
 
 # Gitkeep
 !/**/.gitkeep
