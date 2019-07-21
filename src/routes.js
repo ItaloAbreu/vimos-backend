@@ -9,13 +9,13 @@ const UploadVideo = multer(uploadsConfig).single('video');
 
 routes.use('/', express.static(`${__dirname}/public`));
 
-routes.get('/list', VideoController.index);
-routes.post('/video/storage', UploadVideo, VideoController.storage);
-routes.get('/video/:id', VideoController.show);
-routes.put('/video/:id', VideoController.update);
-routes.delete('/video/:id', VideoController.delete);
+routes.get('/api/list', VideoController.index);
+routes.post('/api/video/storage', UploadVideo, VideoController.storage);
+routes.get('/api/video/:id', VideoController.show);
+routes.put('/api/video/:id', VideoController.update);
+routes.delete('/api/video/:id', VideoController.delete);
 
-routes.get('/play/:movie', StreamVideos);
-routes.get('/thumb/:thumbnail', SendThumbnail);
+routes.get('/api/play/:movie', StreamVideos);
+routes.get('/api/thumb/:thumbnail', SendThumbnail);
 
 module.exports = routes;
