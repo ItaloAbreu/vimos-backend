@@ -1,7 +1,8 @@
 const multer = require('multer');
 const path = require('path');
 
-const acceptedExtensions = ['.mp4', '.avi', '.ogg'];
+const ACCEPTED_EXTENSIONS = ['.mp4', '.avi', '.ogg'];
+const SIZE_LIMIT = 512 * 1024 * 1024;
 
 module.exports = {
   storage: multer.diskStorage({
@@ -11,9 +12,12 @@ module.exports = {
     },
   }),
   fileFilter(req, file, callback) {
-    if (acceptedExtensions.includes(path.extname(file.originalname))) {
-      return callback(null, true);
+    if (!ACCEPTED_EXTENSIONS.includes(path.extname(file.originalname))) {
+      return callback(new Error('Wrong file type.'));
     }
-    return callback(new Error('Wrong file type.'));
+    return callback(null, true);
+  },
+  limits: {
+    fileSize: SIZE_LIMIT,
   },
 };
