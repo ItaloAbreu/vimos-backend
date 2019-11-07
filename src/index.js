@@ -12,7 +12,7 @@ server.use(bodyParser.json());
 
 mongoose.connect(
   process.env.MONGO,
-  { useNewUrlParser: true },
+  { useUnifiedTopology: true },
 );
 require('./models/VideoModel');
 
