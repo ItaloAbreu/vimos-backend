@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const port = process.env.PORT || 8000;
 const server = express();
+require('dotenv').config();
 
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true }));
