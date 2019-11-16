@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const internalIp = require('internal-ip');
 
 const port = process.env.PORT || 8000;
 const server = express();
@@ -22,4 +23,5 @@ server.use(require('./routes'));
 server.listen(port, () => process.stdout.write(`
   Server rodando.
   http://localhost:${port}
+  http://${internalIp.v4.sync()}:${port}
 `));
