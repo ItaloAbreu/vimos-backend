@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
+const { ACCEPTED_EXTENSIONS, MINE_TYPES } = require('../config/globalConsts');
 
 function StreamVideos(req, res) {
   const { movie } = req.params;
   const movieFile = path.join(__dirname, '..', '..', 'uploads', `${movie}`);
-  const acceptedExtensions = ['.mp4', '.avi', '.ogg'];
 
-  if (acceptedExtensions.includes(path.extname(movie))) {
+  if (ACCEPTED_EXTENSIONS.includes(path.extname(movie))) {
     fs.stat(movieFile, (err, stats) => {
       if (err) {
         // eslint-disable-next-line no-console
@@ -26,7 +26,7 @@ function StreamVideos(req, res) {
         'Content-Range': `bytes ${start}-${end}/${size}`,
         'Accept-Ranges': 'bytes',
         'Content-Length': chunkSize,
-        'Content-Type': 'video/mp4',
+        'Content-Type': MINE_TYPES[path.extname(movie)],
       });
 
       res.status(206);

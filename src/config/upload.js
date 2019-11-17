@@ -1,8 +1,7 @@
 const multer = require('multer');
 const path = require('path');
 
-const ACCEPTED_EXTENSIONS = ['.mp4', '.avi', '.ogg'];
-const SIZE_LIMIT = 512 * 1024 * 1024;
+const { ACCEPTED_EXTENSIONS, SIZE_LIMIT } = require('./globalConsts');
 
 module.exports = {
   storage: multer.diskStorage({
