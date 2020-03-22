@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const internalIp = require('internal-ip');
 
-const port = process.env.PORT || 8000;
 const server = express();
 require('dotenv').config();
+
+const port = process.env.PORT || 8000;
 
 server.use(cors());
 server.use(bodyParser.urlencoded({ extended: true }));
